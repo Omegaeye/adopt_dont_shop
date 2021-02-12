@@ -12,6 +12,12 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
   end
 
+  def create
+    pet = Pet.new(pets_params)
+    pet.save
+    redirect_to "/pets"
+  end
+
   def update
     pet = Pet.find(params[:id])
     pet.update(pets_params)

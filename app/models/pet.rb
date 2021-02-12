@@ -6,5 +6,5 @@ class Pet < ApplicationRecord
               greater_than_or_equal_to: 0
             }
 
-  enum sex: [:female, :male]
+  enum sex: [:female, :male, :unknown]
 end
