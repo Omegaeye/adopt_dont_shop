@@ -13,8 +13,6 @@ class PetsController < ApplicationController
   end
 
   def create
-    # pet = Pet.new(pets_params)
-    # pet.save
   end
 
   def update

@@ -1,13 +1,13 @@
 
 <% @applications.each do |application| %>
-<h1> <%= "#{application.name} Application" %> </h1>
+<h1> <%= link_to "#{application.name} Application", "/applications/#{application.id}" %> </h1>
 
 Address: <%= application.address %><br>
 City: <%= application.city %><br>
 State: <%= application.state %><br>
 Zip: <%= application.zip %><br>
-Description: <%= application.description %>
-Status: <%= application.status %>
+Description: <%= application.description %><br>
+Status: <%= application.status %><br>
 <a href="/applications/<%= application.id %>/edit">Update Application</a>
 <%= button_to "Delete Application", "/applications/#{application.id}", method: :delete %>
 <% end %>

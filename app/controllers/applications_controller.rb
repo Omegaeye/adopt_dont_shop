@@ -4,30 +4,38 @@ class ApplicationsController < ApplicationController
     @applications = Application.all
   end
 
+  def new
+    @application = Application.new
+  end
+
   def create
-    @application = Application.new(applications_params)
-    @application.save
-    redirect_to "/applications/#{@application.id}"
+    @application = Application.create(applications_params)
+    if @application.save
+      flash[:success] = "Application successfully saved!"
+      redirect_to "/applications/#{@application.id}"
+    else
+      flash[:error] = "Application was not saved!"
+      render :new
+    end
   end
 
   def show
     if params[:pet_name]
       @pets = Pet.name_search(params[:pet_name])
       @application = Application.find(params[:id])
-    elsif params[:pet_id]
-      @pet = Pet.find(params[:pet_id])
-      @application = Application.find(params[:id])
-      @pet_applications = PetApplication.create(pet: @pet, application: @application)
-      redirect_to "/applications/#{params[:id]}"
     else
-      # @pet = Pet.find(params[:pet_id])
       @application = Application.find(params[:id])
     end
   end
 
   def update
-    if params[:pet_id]
+    @application = Application.find(params[:id])
+    if params[:description]
+      @application.update_attributes(description: params[:description], status: "Pending")
+    else
+      @application.update(applications_params)
     end
+    redirect_to "/applications/#{@application.id}"
   end
 
   def destroy
