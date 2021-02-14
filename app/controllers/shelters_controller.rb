@@ -15,7 +15,7 @@ class SheltersController < ApplicationController
     @shelter = Shelter.create(shelter_params)
     if @shelter.save
       flash[:success] = "Shelter successfully saved!"
-      redirect_to "/shelters"
+      redirect_to shelters_path
     else
       flash[:error] = "Shelter was not saved!"
       render :new
@@ -38,7 +38,7 @@ class SheltersController < ApplicationController
 
   def destroy
     Shelter.destroy(params[:id])
-    redirect_to '/shelters'
+    redirect_to shelters_path
   end
 
   private

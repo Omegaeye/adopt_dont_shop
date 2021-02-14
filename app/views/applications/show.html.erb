@@ -1,39 +1,13 @@
-<h1> <%= "#{@application.name}'s Application" %> </h1>
+<header class="header-link"> <%= "#{@application.name}'s Application" %> </header>
+<p><%= button_to "Delete Application", "/applications/#{@application.id}", method: :delete %>
 
-Address: <%= @application.address %><br>
-City: <%= @application.city %><br>
-State: <%= @application.state %><br>
-Zip: <%= @application.zip %><br>
-Description: <%= @application.description %><br>
-Status: <%= @application.status %><br>
 
-<h3> Pets: </h3>
-<% if @application.pets.length > 0  %>
-  <section>
-    <% @application.pets.each do |pet| %>
-        <%= link_to "#{pet.name}", "/pets/#{pet.id}", {:style => 'color:white'} %><br>
-        <%= form_with url: "/applications/#{@application.id}", method: :patch, local: true do |f| %>
-        <%= f.label "Please tell us a little about yourself" %><br>
-        <%= f.text_field :description, required: true, :size => "100" %>
-        <%= f.submit 'submit application' %>
-        <% end %>
-    <% end %>
-  </section>
-<% else %>
-<h2> Add a Pet to this Application </h2>
-    <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :pet_name, required: true %>
-      <%= f.submit 'Search Pet by Name' %>
-   <% end %>
+<p>Address: <%= @application.address %></p>
+<p>City: <%= @application.city %></p>
+<p>State: <%= @application.state %></p>
+<p>Zip: <%= @application.zip %></p>
+<p>Description: <%= @application.description %></p>
+<p>Status: <%= @application.status %></p>
 
-      <% if params[:pet_name] %>
-        <% @pets.each do |pet| %>
-          <%= pet.name %>
-          <%= button_to "Adopt this Pet", "/applications/#{@application.id}", method: :post, params: {pet_id: pet.id} %>
-        <% end %>
-     <% end %>
-<% end %>
-
-   <%= link_to "Update Application", "/applications/#{@application.id}/edit" %><br>
-   <%= button_to "Delete Application", "/applications/#{@application.id}", method: :delete %>
+<header class="header-link"> Pets: </header>
+  <%= render :partial => @application.status %>
