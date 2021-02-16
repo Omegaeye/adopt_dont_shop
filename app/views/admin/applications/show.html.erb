@@ -1,0 +1,24 @@
+<header class="header-link"> Admin's  <%= "#{@application.name}'s Application" %> </header>
+<p><%= button_to "Delete Application", "/applications/#{@application.id}", method: :delete %>
+
+
+<p>Address: <%= @application.address %></p>
+<p>City: <%= @application.city %></p>
+<p>State: <%= @application.state %></p>
+<p>Zip: <%= @application.zip %></p>
+<p>Description: <%= @application.description %></p>
+<p>Status: <%= @application.status %></p>
+
+<header class="header-link"> Pets: </header>
+<% @application.pet_applications.each do |pet_app| %>
+<% if pet_app.approved == "true" %>
+    <p><%= pet_app.pet.name %> has been approved</p>
+<% elsif pet_app.approved == "false" %>
+<p><%= pet_app.pet.name %> has been rejected</p>
+<% else %>
+  <%= pet_app.pet.name %>
+  <%= button_to "approve", admin_application_path(@application.id), method: :patch, params: {approved: pet_app.pet_id} %>
+
+  <%= button_to "reject", admin_application_path(@application.id), method: :patch, params: {rejected: pet_app.pet_id} %>
+  <% end %>
+<% end %>
