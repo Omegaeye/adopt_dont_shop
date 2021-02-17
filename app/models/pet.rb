@@ -14,4 +14,8 @@ class Pet < ApplicationRecord
     where("name ILIKE ?", "%#{name}%")
   end
 
+  def self.action_pets
+    joins(:pet_applications).where(pet_applications: {approved: "none"})
+  end
+
 end

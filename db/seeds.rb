@@ -18,6 +18,9 @@ khoa_app = Application.create!(name: "Khoa", address: "321 Broadway St", city: "
 jake_app = Application.create!(name: "Jake", address: "987 Genius Ct", city: "Denver", state: "CO", zip: "80021")
 kupo = Application.create!(name: "Kupo", address: "321 Broadway St", city: "Denver", state: "CO", zip: "80021")
 
+
+
+
 buddy = new_home.pets.create!(image: "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/20113314/Carolina-Dog-standing-outdoors.jpg", name: "Buddy", approximate_age: 4, description: "Doggy", adoptable: true, sex: :male)
 spiky = new_home.pets.create!(image: "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/20113314/Carolina-Dog-standing-outdoors.jpg", name: "Spiky", approximate_age: 2, description: "Doggy", adoptable: true, sex: :male)
 cookie = rehome.pets.create!(image: "https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/20113314/Carolina-Dog-standing-outdoors.jpg", name: "Cookie", approximate_age: 4, description: "Kitty", adoptable: true, sex: :female)
@@ -26,3 +29,14 @@ freya = adopt_now.pets.create!(image: "https://ei.marketwatch.com/Multimedia/202
 angel = adopt_now.pets.create!(image: "https://ei.marketwatch.com/Multimedia/2020/04/09/Photos/ZQ/MW-IE203_corona_20200409232441_ZQ.jpg?uuid=d12f4334-7ada-11ea-b13a-9c8e992d421e", name: "Angel", approximate_age: 1, description: "Kitty", adoptable: true, sex: :female)
 wuff = pet_happy.pets.create!(image: "https://ei.marketwatch.com/Multimedia/2020/04/09/Photos/ZQ/MW-IE203_corona_20200409232441_ZQ.jpg?uuid=d12f4334-7ada-11ea-b13a-9c8e992d421e", name: "Wuff", approximate_age: 3, description: "Kitty", adoptable: true, sex: :male)
 weenie = pet_happy.pets.create!(image: "https://ei.marketwatch.com/Multimedia/2020/04/09/Photos/ZQ/MW-IE203_corona_20200409232441_ZQ.jpg?uuid=d12f4334-7ada-11ea-b13a-9c8e992d421e", name: "Weenie", approximate_age: 1, description: "Kitty", adoptable: true, sex: :female)
+
+PetApplication.create!(pet: buddy, application: andrew_app)
+PetApplication.create!(pet: spiky, application: andrew_app)
+PetApplication.create!(pet: cookie, application: khoa_app)
+PetApplication.create!(pet: fluffy, application: khoa_app)
+PetApplication.create!(pet: freya, application: jake_app)
+PetApplication.create!(pet: angel, application: jake_app)
+
+andrew_app.update(description: "Awesome", status: "Pending")
+khoa_app.update(description: "Awesome", status: "Pending")
+jake_app.update(description: "Not_Awesome", status: "Pending")

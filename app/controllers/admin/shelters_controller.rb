@@ -16,7 +16,7 @@ class Admin::SheltersController < ApplicationController
                       *
                       FROM shelters
                       WHERE
-                      id = #{params[:id]}")
+                      id = #{params[:id]}").first
     # @shelter = Shelter.find(params[:id])
   end
 
