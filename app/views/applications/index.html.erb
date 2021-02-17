@@ -9,5 +9,5 @@ Zip: <%= application.zip %><br>
 Description: <%= application.description %><br>
 Status: <%= application.status %><br>
 
-<%= button_to "Delete Application", "/applications/#{application.id}", method: :delete %>
+<%= button_to "Delete #{application.name}'s Application", "/applications/#{application.id}", method: :delete %>
 <% end %>

@@ -11,7 +11,6 @@ class ApplicationsController < ApplicationController
   def create
     @application = Application.create(applications_params)
     if @application.save
-      flash[:success] = "Application successfully saved!"
       redirect_to "/applications/#{@application.id}"
     else
       flash[:error] = "Application was not saved!"
@@ -28,16 +27,10 @@ class ApplicationsController < ApplicationController
     end
   end
 
-  def edit
-    @application = Application.find(params[:id])
-  end
-
   def update
     @application = Application.find(params[:id])
     if params[:description]
       @application.update_attributes(description: params[:description], status: "Pending")
-    else
-      @application.update(applications_params)
     end
     redirect_to "/applications/#{@application.id}"
   end

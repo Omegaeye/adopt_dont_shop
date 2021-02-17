@@ -1,4 +1,10 @@
 <h1> Shelters </h1>
 <% @shelters.each do |shelter| %>
-  <p><%= shelter.name %></p>
-<% end %>
+  <p><%= link_to "#{shelter.name}", "/admin/shelters/#{shelter.id}" %></p>
+  <p>Address: <%= shelter.address %>, City: <%= shelter.city %>, State: <%= shelter.state %>, Zip: <%= shelter.zip %></p>
+  <% end %>
+
+  <h2>Shelter's with Pending Applications </h2>
+      <% Shelter.shelter_with_app_pending.distinct.each do |shelter| %>
+            <%= link_to "#{shelter.name}'s Shelter", "/admin/shelters/#{shelter.id}" %><br>
+      <% end %>

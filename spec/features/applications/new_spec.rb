@@ -12,9 +12,17 @@ RSpec.describe "application new page" do
     fill_in "city", with: "Doomcity"
     fill_in "state", with: "CO"
     fill_in "zip", with: 80116
-    fill_in "description", with: "Purple Hair"
     click_button "submit"
-    
+
+    visit "/pets"
+
+    expect(page).to have_link("Start an Application")
+    click_link("Start an Application")
+    expect(current_path).to eq("/applications/new")
+
+    click_button "submit"
+    expect(page).to have_content("Application was not saved!")
+
   end
 
 end

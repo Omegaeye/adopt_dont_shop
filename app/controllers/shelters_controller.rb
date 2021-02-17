@@ -28,12 +28,7 @@ class SheltersController < ApplicationController
 
   def update
     @shelter = Shelter.update(shelter_params)
-    if @shelter.save
-      flash[:success] = "Shelter successfully saved!"
-      redirect_to "/shelters/#{shelter.id}"
-    else
-      flash[:error] = "Shelter was not saved!"
-    end
+      redirect_to "/shelters/#{@shelter.first.id}"
   end
 
   def destroy

@@ -24,5 +24,14 @@ RSpec.describe 'Create Shelter from index page' do
     expect(current_path).to eq('/shelters')
 
     expect(page).to have_content("Pa and Paws")
+
+    visit '/shelters'
+
+    click_link 'New Shelter'
+
+    expect(current_path).to eq('/shelters/new')
+    expect(page).to have_button('Create Shelter')
+    click_button('Create Shelter')
+    expect(page).to have_content("Shelter was not saved!")
   end
 end

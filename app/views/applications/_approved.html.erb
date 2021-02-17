@@ -1,0 +1,3 @@
+<% @application.pets.each do |pet| %>
+    <%= link_to "#{pet.name}", "/pets/#{pet.id}", {:style => 'color:white'} %><br>
+    <% end %>
