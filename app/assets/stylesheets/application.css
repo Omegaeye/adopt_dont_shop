@@ -69,8 +69,10 @@ address {
   padding: 5px;
   margin: 5px;
   position: fixed;
-  left:850px;
-  top:10px;
+  left:auto;
+  bottom:300px;
+  top:300px;
+  right:0;
   text-align: center;
   }
 
@@ -83,8 +85,10 @@ border: 10px solid green;
 padding: 5px;
 margin: 5px;
 position: fixed;
-left:700px;
-top:100px;
+left:auto;
+bottom:300px;
+top:300px;
+right:0;
 text-align: center;
 }
 
