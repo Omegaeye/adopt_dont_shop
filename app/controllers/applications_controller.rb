@@ -46,3 +46,6 @@ class ApplicationsController < ApplicationController
   end
 
 end
+
+# method that can get anything from anywhere
+# Shelter.select('shelters.*, pets.*, pet_applications.*, applications.*').joins(pets: [{pet_applications: :application}]).where(applications: {status: "Pending"}).pluck("shelters.name, applications.name, pets.name")

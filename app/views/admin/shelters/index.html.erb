@@ -1,10 +1,20 @@
 <h1> Shelters </h1>
 <% @shelters.each do |shelter| %>
-  <p><%= link_to "#{shelter.name}", "/admin/shelters/#{shelter.id}" %></p>
-  <p>Address: <%= shelter.address %>, City: <%= shelter.city %>, State: <%= shelter.state %>, Zip: <%= shelter.zip %></p>
-  <% end %>
+  <div class="column">
+    <p class="header-link"><%= link_to "#{shelter.name}", "/admin/shelters/#{shelter.id}" %></p>
+    <address>
+      Address: <%= shelter.address %><br>
+      City: <%= shelter.city %><br>
+      State: <%= shelter.state %><br>
+      Zip: <%= shelter.zip %><br>
+    </address>
+  </div>
+<% end %>
 
-  <h2>Shelter's with Pending Applications </h2>
+
+  <div class="box">
+  <p>Shelter's with Pending Applications </p>
       <% Shelter.shelter_with_app_pending.distinct.each do |shelter| %>
             <%= link_to "#{shelter.name}'s Shelter", "/admin/shelters/#{shelter.id}" %><br>
       <% end %>
+  </div>

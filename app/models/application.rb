@@ -10,4 +10,8 @@ class Application < ApplicationRecord
     self.description = "_"
   end
 
+  def partial_naming
+    self.status.gsub(" ", "_").downcase
+  end
+
 end

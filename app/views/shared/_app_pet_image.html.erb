@@ -1,4 +1,4 @@
 <% @application.pets.each do |pet| %>
-<%= render 'shared/pet_image' %>
+    <%= image_tag "#{pet.image}", class: "img-container"%><br>
     <%= link_to "#{pet.name}", "/pets/#{pet.id}", {:style => 'color:white'} %><br>
     <% end %>

@@ -1,0 +1,14 @@
+
+<address class="column">
+Address: <%= @application.address %><br>
+City: <%= @application.city %><br>
+State: <%= @application.state %><br>
+Zip: <%= @application.zip %><br>
+</address>
+<center>Please tell us a little about yourself:</center>
+  <center><%= @application.description%></center>
+
+  <div class="status_box">
+       <p>Status:</p>
+       <p class="status"><%= @application.status %></p>
+  </div>

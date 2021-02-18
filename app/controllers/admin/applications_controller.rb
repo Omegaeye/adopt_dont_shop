@@ -9,22 +9,31 @@ class Admin::ApplicationsController < ApplicationController
  end
 
  def update
-   @application = Application.find(params[:id])
-   if params[:approved]
-     @pet_application = @application.pet_applications.where(pet_id: params[:approved])
-     @pet_application.update(approved: "true")
-     if @application.pet_applications.all?{|app| app.approved == "true"} == true
-       @application.update(status: "Approved")
-       @pet = Pet.find(params[:approved])
-       @application.pets.update_all(adoptable: false)
-     end
-   else params[:rejected]
-     @pet_application = @application.pet_applications.where(pet_id: params[:rejected])
-     @pet_application.update(approved: "rejected")
-     if @application.pet_applications.any?{|app| app.approved == "none" } == false && @application.pet_applications.any?{|app| app.approved == "rejected" } == true
-     @application.update(status: "Rejected")
-     end
-   end
-   redirect_to "/admin/applications/#{@application.id}"
- end
+    @application = Application.find(params[:id])
+    @pets = @application.pets
+    @pet_apps = @application.pet_applications
+    if params[:approved]
+      @pet_application = @application.pet_applications.where(pet_id: params[:approved])
+      @pet_application.update(approved: "true")
+      all_approved
+    else params[:rejected]
+      @pet_application = @application.pet_applications.where(pet_id: params[:rejected])
+      @pet_application.update(approved: "false")
+      rejected
+    end
+    redirect_to "/admin/applications/#{@application.id}"
+  end
+
+  def all_approved
+    if @pet_apps.all? { |pet_app| pet_app.approved == "true" } == true
+      @application.update(status: "Approved")
+      @application.pets.each { |pet| pet.update(adoptable: false) }
+    end
+  end
+  
+  def rejected
+    if @pet_apps.any? { |pet_app| pet_app.approved == "false" } && @pet_apps.none? { |pet_app| pet_app.approved == "none" unless pet_app.pet.adoptable == false }
+      @application.update(status: "Rejected")
+    end
+  end
 end
