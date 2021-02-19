@@ -47,7 +47,19 @@ address {
   font-style: italic;
 }
 
-
+section {
+  color:black;
+  font-size: 20px;
+  width: auto;
+  height: auto;
+  padding: 5px;
+  margin: 5px;
+  position: sticky;
+  left:auto;
+  right:auto;
+  text-align: left;
+  float:bottom;
+}
 
 .status { color: white;
     text-shadow: 1px 1px 2px black, 0 0 10px blue, 0 0 5px darkblue;
@@ -116,4 +128,21 @@ text-align: center;
 .img-container {
   width: 50%;
   height: auto;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 20px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: lightgrey;
 }

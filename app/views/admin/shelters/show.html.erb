@@ -5,6 +5,7 @@
   <p>State: <%= @shelter.state %></p>
   <p>Zip: <%= @shelter.zip %></p>
 
+  <div class="box">
   <h2 class="header-link">Action Required!</h2>
   <% @shelter.action_pets.each do |pet| %>
     <%= pet.name %>
@@ -14,9 +15,20 @@
       <% end %>
     <% end %><br>
   <% end %>
+  </div>
 
-
+<section>
 <h2> Statistics: </h2>
-<p> Average Pet Age: <%= @shelter.average_pet_age %> </p>
-<p> Adoptable Pets: <%= @shelter.adoptable_pets %> </p>
-<p> Adopted Pets: <%= @shelter.adopted_pets %> </p>
+<table>
+  <tr>
+<th>Average Pet Age: </th>
+<th>Adoptable Pets:</th>
+<th>Adopted Pets: </th>
+ </tr>
+ <tr>
+   <td><%= @shelter.average_pet_age %></td>
+   <td><%= @shelter.adoptable_pets %></td>
+   <td><%= @shelter.adopted_pets %></td>
+   </tr>
+</table>
+</section>

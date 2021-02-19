@@ -1,7 +1,12 @@
 <h1> Admin's Page All Applications </h1>
 <% @applications.each do |application| %>
-<div>
-<p class="header-link"><%= link_to "#{application.name}'s Application", admin_application_path(application.id) %></p>
-<p class="status"> <%= "#{application.status}"%> </p>
-</div>
+<table>
+  <tr>
+    <th><%= link_to "#{application.name}'s Application", admin_application_path(application.id) %></th>
+  </tr>
+  <tr>
+    <td class="status"> <%= "#{application.status}"%> </td>
+  </tr>
+  </tr>
+</table>
 <% end %>
