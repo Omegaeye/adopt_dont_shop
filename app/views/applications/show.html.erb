@@ -4,4 +4,4 @@
 
 <%= button_to "Delete Application", "/applications/#{@application.id}", method: :delete %>
 <header class="header-link"> Pets: </header>
-  <%= render partial: @application.partial_naming %>
+  <%= render partial: @application.status %>
