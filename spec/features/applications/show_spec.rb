@@ -13,10 +13,10 @@ RSpec.describe 'Application Show page' do
 
       visit "/applications/#{@application1.id}"
       expect(page).to have_content("#{@application1.name}")
-      expect(page).to have_content("Address: #{@application1.address}")
-      expect(page).to have_content("City: #{@application1.city}")
-      expect(page).to have_content("State: #{@application1.state}")
-      expect(page).to have_content("Zip: #{@application1.zip}")
+      expect(page).to have_content("#{@application1.address}")
+      expect(page).to have_content("#{@application1.city}")
+      expect(page).to have_content("#{@application1.state}")
+      expect(page).to have_content("#{@application1.zip}")
 
       fill_in :pet_name, with: "Thor"
       click_button('Search Pet by Name')

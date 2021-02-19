@@ -1,7 +1,7 @@
-<header class="header-link"> <%= "#{@application.name}'s Application" %> </header>
-<p><%= button_to "Delete Application", "/applications/#{@application.id}", method: :delete %>
+<p class="header-link"> <%= "#{@application.name}'s Application" %> </p>
 
-  <%= render 'shared/app_address' %>
+<%= render 'shared/app_address' %>
 
+<%= button_to "Delete Application", "/applications/#{@application.id}", method: :delete %>
 <header class="header-link"> Pets: </header>
   <%= render partial: @application.partial_naming %>

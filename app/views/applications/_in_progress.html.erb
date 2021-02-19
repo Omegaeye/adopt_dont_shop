@@ -1,14 +1,17 @@
+<%= form_with url: "/applications/#{@application.id}", method: :patch, local: true do |f| %>
+<%= f.label "Please tell us a little about yourself" %><br>
+<%= f.text_field :description, required: true, :size => "100" %>
+<%= f.submit 'submit application' %>
+<% end %>
 
 <% if @application.pets.length > 0  %>
-    <% @application.pets.each do |pet| %>
-    <p><%= image_tag "#{pet.image}" %></p><br>
-        <%= link_to "#{pet.name}", "/pets/#{pet.id}", {:style => 'color:white'} %><br>
-        <%= form_with url: "/applications/#{@application.id}", method: :patch, local: true do |f| %>
-        <%= f.label "Please tell us a little about yourself" %><br>
-        <%= f.text_field :description, required: true, :size => "100" %>
-        <%= f.submit 'submit application' %>
-        <% end %>
-      <% end %>
-    <% end %>
+  <% @application.pets.each do |pet| %>
+    <%= link_to "#{pet.name}", "/pets/#{pet.id}", {:style => 'color:white'} %><br>
+    <p class="img-container"><%= image_tag "#{pet.image}" %></p>
+  <% end %>
+<% end %>
+
+<div class="shelter_box">
 <h2> Add a Pet to this Application </h2>
-                <%= render partial: "add_pets" %>
+  <%= render partial: "add_pets" %>
+  </div>

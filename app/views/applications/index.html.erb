@@ -1,13 +1,9 @@
 
 <% @applications.each do |application| %>
-<h1> <%= link_to "#{application.name} Application", application_path(application.id) %> </h1>
-
-Address: <%= application.address %><br>
-City: <%= application.city %><br>
-State: <%= application.state %><br>
-Zip: <%= application.zip %><br>
+<p class="head-link"> <%= link_to "#{application.name} Application", application_path(application.id) %> </p>
+<% @application = application %>
+<%= render "shared/app_address" %>
 Description: <%= application.description %><br>
-Status: <%= application.status %><br>
 
 <%= button_to "Delete #{application.name}'s Application", "/applications/#{application.id}", method: :delete %>
 <% end %>

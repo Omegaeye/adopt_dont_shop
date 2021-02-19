@@ -1,21 +1,15 @@
-<h1><%= @shelter.name %>'s Shelter </h1>
+<%= render "shared/shelter_table" %>
 
-  <p>Address: <%= @shelter.address %></p>
-  <p>City: <%= @shelter.city %></p>
-  <p>State: <%= @shelter.state %></p>
-  <p>Zip: <%= @shelter.zip %></p>
-
-  <div class="box">
-  <h2 class="header-link">Action Required!</h2>
   <% @shelter.action_pets.each do |pet| %>
-    <%= pet.name %>
     <% pet.pet_applications.each do |pet_app| %>
       <% if pet_app.application.status == "Pending" %>
+      <div class="box">
+      <h2 class="header-link">Action Required!</h2>
       <%= link_to "Application #{pet_app.application_id}", "/admin/applications/#{pet_app.application_id}" %>
+    </div>
       <% end %>
     <% end %><br>
   <% end %>
-  </div>
 
 <section>
 <h2> Statistics: </h2>

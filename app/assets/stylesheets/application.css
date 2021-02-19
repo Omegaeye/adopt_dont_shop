@@ -65,6 +65,14 @@ section {
     text-shadow: 1px 1px 2px black, 0 0 10px blue, 0 0 5px darkblue;
        }
 
+.rejected_text { color: white;
+    text-shadow: 1px 1px 2px black, 0 0 10px red, 0 0 5px darkred;
+      }
+
+.approved_text { color: white;
+    text-shadow: 1px 1px 2px black, 0 0 10px green, 0 0 5px darkgreen;
+      }
+
 .nav-bar {
   font-family: Arial;
   background-color: lightblue;
@@ -88,6 +96,22 @@ section {
   text-align: center;
   }
 
+  .shelter_box {
+  font-size: 20px;
+  background-color: lightgrey;
+  width: auto;
+  height: auto;
+  border: 10px solid green;
+  padding: 5px;
+  margin: 5px;
+  position: sticky;
+  left:0;
+  bottom:0;
+  top:auto;
+  right:0;
+  text-align: center;
+  }
+
 .box {
 font-size: 20px;
 background-color: lightgrey;
@@ -97,11 +121,18 @@ border: 10px solid green;
 padding: 5px;
 margin: 5px;
 position: fixed;
-left:auto;
-bottom:300px;
-top:300px;
+left:0;
+bottom:auto;
+top:0;
 right:0;
 text-align: center;
+}
+
+.rejected {
+  border: 10px solid red;
+}
+.approved {
+  border: 10px solid green;
 }
 
 * {
@@ -126,8 +157,8 @@ text-align: center;
 }
 
 .img-container {
-  width: 50%;
-  height: auto;
+  max-width:50%;
+  max-height:50%;
 }
 
 table {

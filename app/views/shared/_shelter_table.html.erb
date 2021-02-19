@@ -1,0 +1,15 @@
+<p class="header-link"><%= link_to "#{@shelter.name}", "/admin/shelters/#{@shelter.id}" %></p>
+<table>
+  <tr>
+    <th>Address: </th>
+    <th>City:    </th>
+    <th>State:   </th>
+    <th>Zip:     </th>
+  </tr>
+  <tr>
+    <td><%= @shelter.address %></td>
+    <td><%= @shelter.city    %></td>
+    <td><%= @shelter.state   %></td>
+    <td><%= @shelter.zip     %></td>
+  </tr>
+</table>

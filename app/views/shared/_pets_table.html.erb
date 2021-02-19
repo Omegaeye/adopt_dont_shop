@@ -1,0 +1,23 @@
+
+<h2><%= @pet.name %></h2>
+<table>
+  <tr>
+    <th>    Description: </th>
+    <th>     Approx Age: </th>
+    <th>            Sex: </th>
+    <th>Adoption Status: </th>
+    <th>Belongs to Shelters: </th>
+
+  </tr>
+  <tr>
+    <td><%= @pet.description     %></td>
+    <td><%= @pet.approximate_age %></td>
+    <td><%= @pet.sex.capitalize  %></td>
+    <td class="status"><%= @pet.adoptable?      %></td>
+    <td><%= link_to "#{@pet.shelter.name}", "shelters/#{@pet.shelter.id}" %></td>
+    <td>
+      <button><%= button_to "Update Pet", "/pets/#{@pet.id}/edit", method: :get %></button>
+      <button><%= button_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %></button>
+    </td>
+  </tr>
+</table>

@@ -5,16 +5,9 @@
 
 <% @pets.each do |pet| %>
   <% if pet.adoptable == true %>
+  <% @pet = pet %>
   <section id="pet-<%=pet.id%>">
-      <h3 class="header-link"><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></h3>
-      <%= image_tag "#{pet.image}", class: "img-container", style: "float:right"%><br>
-      <div class="column">
-      Approx Age: <%= pet.approximate_age %><br>
-      Sex: <%= pet.sex%><br>
-      Shelter: <%= link_to "#{pet.shelter.name}", "shelters/#{pet.shelter.id}" %><br>
-      <a href="/pets/<%= pet.id %>/edit">Update Pet</a><br>
-      <%= link_to "Delete Pet", "/pets/#{pet.id}", method: :delete %><br>
-      </div>
+      <%= render 'shared/pets_table' %>
     </section>
   <% end %>
 <% end %>

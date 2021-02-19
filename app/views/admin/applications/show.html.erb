@@ -6,15 +6,25 @@
 
 <header class="header-link"> Pets: </header>
 <% @application.pet_applications.each do |pet_app| %>
+<% @pet = pet_app.pet %>
   <% if    pet_app.approved == "true" %>
-    <p><%= pet_app.pet.name %> has been approved</p>
+    <div class="approved">
+    <p class="approved_text">Has been approved </p>
+    <%= render "shared/pets_table" %>
+    </div>
   <% elsif pet_app.approved == "false" %>
-    <p><%= pet_app.pet.name %> has been rejected</p>
+    <div class="rejected">
+      <p class="rejected_text">Has been Rejected</p>
+      <%= render "shared/pets_table" %>
+    </div>
   <% elsif pet_app.pet.adoptable == false%>
-    <p><%= pet_app.pet.name %> has been approved</p>
+    <div class="approved">
+      <p class="approved_text">Has been approved </p>
+      <%= render "shared/pets_table" %>
+    </div>
   <% else %>
-    <%= pet_app.pet.name %>
-    <%= button_to "approve", admin_application_path(@application.id), method: :patch, params: {approved: pet_app.pet_id} %>
-    <%= button_to "reject", admin_application_path(@application.id), method: :patch, params: {rejected: pet_app.pet_id} %>
+    <%= render "shared/pets_table" %>
+    <button><%= button_to "Approve Pet", admin_application_path(@application.id), method: :patch, params: {approved: pet_app.pet_id} %></button>
+    <button><%= button_to "Reject Pet", admin_application_path(@application.id), method: :patch, params: {rejected: pet_app.pet_id} %></button>
   <% end %>
 <% end %>

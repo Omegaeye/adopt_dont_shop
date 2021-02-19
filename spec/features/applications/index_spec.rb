@@ -15,10 +15,10 @@ RSpec.describe 'Application Index page' do
 
 
       expect(page).to have_content("#{@application1.name}")
-      expect(page).to have_content("Address: #{@application1.address}")
-      expect(page).to have_content("City: #{@application1.city}")
-      expect(page).to have_content("State: #{@application1.state}")
-      expect(page).to have_content("Zip: #{@application1.zip}")
+      expect(page).to have_content("#{@application1.address}")
+      expect(page).to have_content("#{@application1.city}")
+      expect(page).to have_content("#{@application1.state}")
+      expect(page).to have_content("#{@application1.zip}")
 
       expect(page).to have_link("#{@application1.name}")
       click_link("#{@application1.name}")

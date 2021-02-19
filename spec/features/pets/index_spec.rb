@@ -23,7 +23,7 @@ RSpec.describe 'Pets index page' do
     expect(page).to have_content(@pet2.image)
     expect(page).to have_content(@pet2.name)
     expect(page).to have_content(@pet2.approximate_age)
-    expect(page).to have_content(@pet2.sex)
+    expect(page).to have_content(@pet2.sex.capitalize)
     expect(page).to have_content(@shelter2.name)
 
     expect(page).to_not have_content(@shelter3.name)
@@ -34,7 +34,7 @@ RSpec.describe 'Pets index page' do
 
     within "#pet-#{@pet1.id}" do
       expect(page).to have_content("Thor")
-      click_link "Delete Pet"
+      click_button "Delete Pet"
     end
 
     expect(current_path).to eq("/pets")
@@ -46,7 +46,7 @@ RSpec.describe 'Pets index page' do
 
     within "#pet-#{@pet1.id}" do
       expect(page).to have_content("Thor")
-      click_link "Update Pet"
+      click_button "Update Pet"
     end
 
     fill_in "name", with: "Calvin"
