@@ -13,13 +13,13 @@ RSpec.describe 'Delete pet from pet show page' do
   it "can delete a pet from the pet show page" do
     visit "/pets/#{@pet1.id}"
 
-    expect(page).to have_content(@pet1.name)
+    expect(page).to have_button(@pet1.name)
 
     click_button "Delete Pet"
 
     expect(current_path).to eq("/pets")
 
     expect(page).to_not have_content(@pet1.name)
-    expect(page).to have_content(@pet2.name)
+    expect(page).to have_button(@pet2.name)
   end
 end

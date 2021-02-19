@@ -13,24 +13,20 @@ RSpec.describe 'Update pet from pet show page' do
   it "can update a shelter from the shelter show page" do
     visit "/pets/#{@pet1.id}"
 
-    click_link "Update Pet"
+    click_button "Update Pet"
 
     expect(current_path).to eq("/pets/#{@pet1.id}/edit")
 
-    fill_in "name", with: "Thora"
-    fill_in "approximate_age", with: 5
-    fill_in "sex", with: "female"
-    # fill_in "state", with: 'PA'
-    # fill_in "zip", with: 12345
-
-    click_button("Update")
+    fill_in :name, with: "Thora"
+    fill_in :approximate_age, with: 5
+    fill_in :sex, with: "female"
+    click_button("Update Pet")
 
     expect(current_path).to eq("/pets/#{@pet1.id}")
-
-    expect(page).to have_content("Name: Thora")
-    expect(page).to have_content("Approx Age: 5")
-    expect(page).to_not have_content("Approx Age: 2")
-    # expect(page).to have_content("Sex: female")
-    expect(page).to_not have_content("Sex: male")
+    expect(page).to have_button("Thora")
+    expect(page).to have_content("5")
+    expect(page).to_not have_content(" 2")
+    expect(page).to have_content("Female")
+    expect(page).to_not have_content("Male")
   end
 end

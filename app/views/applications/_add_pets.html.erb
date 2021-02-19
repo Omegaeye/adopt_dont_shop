@@ -7,9 +7,9 @@
   <% if params[:pet_name] %>
     <% @pets.each do |pet| %>
       <% if !pet.pet_applications.any?{|app| app.application_id == @application.id} %>
-      <%= image_tag "#{pet.image}", style:'height:auto;width:400px;' %><br>
+        <%= image_tag "#{pet.image}", style:'height:auto;width:400px;' %><br>
         <%= pet.name %>
         <%= button_to "Adopt #{pet.name}", "/applications/#{@application.id}", method: :post, params: {pet_id: pet.id} %>
-        <% end %>
+      <% end %>
     <% end %>
  <% end %>

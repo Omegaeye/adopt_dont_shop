@@ -4,9 +4,9 @@
     <% pet.pet_applications.each do |pet_app| %>
       <% if pet_app.application.status == "Pending" %>
       <div class="box">
-      <h2 class="header-link">Action Required!</h2>
-      <%= link_to "Application #{pet_app.application_id}", "/admin/applications/#{pet_app.application_id}" %>
-    </div>
+        <h2 class="header-link">Action Required!</h2>
+        <%= link_to "#{pet_app.application.name}'s Application", "/admin/applications/#{pet_app.application_id}" %>
+      </div>
       <% end %>
     <% end %><br>
   <% end %>

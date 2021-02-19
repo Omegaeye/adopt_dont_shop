@@ -17,10 +17,10 @@ RSpec.describe 'Pets index page' do
     visit "/pets/#{@pet1.id}"
 
     expect(page).to have_content(@pet1.image)
-    expect(page).to have_content("Name: #{@pet1.name}")
-    expect(page).to have_content("Description: #{@pet1.description}")
-    expect(page).to have_content("Approx Age: #{@pet1.approximate_age}")
-    # expect(page).to have_content("Sex: #{@pet1.sex}")
-    expect(page).to have_content("Adoption Status: #{@pet1.adoptable?}")
+    expect(page).to have_button("#{@pet1.name}")
+    expect(page).to have_content("#{@pet1.description}")
+    expect(page).to have_content("#{@pet1.approximate_age}")
+    expect(page).to have_content("#{@pet1.sex.capitalize}")
+    expect(page).to have_content("#{@pet1.adoptable?}")
   end
 end

@@ -1,0 +1,3 @@
+<%= render "shared/pets_table" %>
+<button><%= button_to "Approve Pet", admin_application_path(@application.id), method: :patch, params: {approved: @pet_app.pet_id} %></button>
+<button><%= button_to "Reject Pet", admin_application_path(@application.id), method: :patch, params: {rejected: @pet_app.pet_id} %></button>

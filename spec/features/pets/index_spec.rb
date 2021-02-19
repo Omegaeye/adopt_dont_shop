@@ -13,15 +13,13 @@ RSpec.describe 'Pets index page' do
   it "displays each pet in the system with attributes" do
 
     visit "/pets"
-
     expect(page).to have_content(@pet1.image)
-    expect(page).to have_content(@pet1.name)
+    expect(page).to have_button("Thor")
     expect(page).to have_content(@pet1.approximate_age)
     expect(page).to have_content(@pet1.sex)
     expect(page).to have_content(@shelter1.name)
-
     expect(page).to have_content(@pet2.image)
-    expect(page).to have_content(@pet2.name)
+    expect(page).to have_button(@pet2.name)
     expect(page).to have_content(@pet2.approximate_age)
     expect(page).to have_content(@pet2.sex.capitalize)
     expect(page).to have_content(@shelter2.name)
@@ -33,7 +31,7 @@ RSpec.describe 'Pets index page' do
     visit "/pets"
 
     within "#pet-#{@pet1.id}" do
-      expect(page).to have_content("Thor")
+      expect(page).to have_button("Thor")
       click_button "Delete Pet"
     end
 
@@ -45,7 +43,7 @@ RSpec.describe 'Pets index page' do
     visit '/pets'
 
     within "#pet-#{@pet1.id}" do
-      expect(page).to have_content("Thor")
+      expect(page).to have_button("Thor")
       click_button "Update Pet"
     end
 
@@ -55,7 +53,7 @@ RSpec.describe 'Pets index page' do
 
     expect(current_path).to eq("/pets/#{@pet1.id}")
 
-    expect(page).to have_content("Calvin")
+    expect(page).to have_button("Calvin")
     expect(page).to_not have_content("Thor")
   end
 end
