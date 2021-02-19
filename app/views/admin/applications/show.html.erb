@@ -3,6 +3,8 @@
 
 
 <%= render 'shared/app_address' %>
+Description:<br>
+<%= @application.description %>
 
 <header class="header-link"> Pets: </header>
 <% @application.pet_applications.each do |pet_app| %>
